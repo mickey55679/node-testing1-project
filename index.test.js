@@ -16,8 +16,22 @@ describe("[Exercise 1] trimProperties", () => {
 });
 
 describe("[Exercise 2] trimPropertiesMutation", () => {
-  // test('[3] returns an object with the properties trimmed', () => {})
-  // test('[4] the object returned is the exact same one we passed in', () => {})
+  test("[3] returns an object with the properties trimmed", () => {
+    // define input object with string props that have leading and/or trailing whitespace
+    const input = { foo: "  foo ", bar: "bar ", baz: " baz" };
+    // define expected output object with the same properties but without the extra whitespace
+    const expected = { foo: "foo", bar: "bar", baz: "baz" };
+    // call trimPropertiesMutation with the input object and store the result in actual
+    const actual = utils.trimPropertiesMutation(input);
+    // use expect(actual).toEqual(expected) to check that the actual input matches the expected output
+    expect(actual).toEqual(expected);
+  });
+   test('[4] the object returned is the exact same one we passed in', () => {
+    const input = {foo: ' foo ', bar: 'bar ',  baz: ' baz'};
+    const copy = { ...input};
+    utils.trimPropertiesMutation(input);
+    expect(input).not.toEqual(copy);
+   })
 });
 
 describe("[Exercise 3] findLargestInteger", () => {

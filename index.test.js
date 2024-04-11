@@ -86,25 +86,25 @@ describe("[Exercise 5] Seasons", () => {
     seasons.next();
     expect(seasons.next()).toBe("winter");
   });
-   test('[12] the FOURTH call of seasons.next returns "spring"', () => {
-     seasons.next();
-      seasons.next();
-       seasons.next();
-       expect( seasons.next()).toBe("spring")
-   })
-  test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
-     seasons.next();
-      seasons.next();
-       seasons.next();
-        seasons.next();
-        expect(seasons.next()).toBe("summer")
-  })
- test('[14] the 40th call of seasons.next returns "spring"', () => {
-  for (let i = 0; i < 39; i++){
+  test('[12] the FOURTH call of seasons.next returns "spring"', () => {
     seasons.next();
-  }
-  expect(seasons.next()).toBe("spring")
- })
+    seasons.next();
+    seasons.next();
+    expect(seasons.next()).toBe("spring");
+  });
+  test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
+    seasons.next();
+    seasons.next();
+    seasons.next();
+    seasons.next();
+    expect(seasons.next()).toBe("summer");
+  });
+  test('[14] the 40th call of seasons.next returns "spring"', () => {
+    for (let i = 0; i < 39; i++) {
+      seasons.next();
+    }
+    expect(seasons.next()).toBe("spring");
+  });
 });
 
 describe("[Exercise 6] Car", () => {
@@ -112,7 +112,14 @@ describe("[Exercise 6] Car", () => {
   beforeEach(() => {
     focus = new utils.Car("focus", 20, 30); // each test must start with a fresh car
   });
-  // test('[15] driving the car returns the updated odometer', () => {})
+  test("[15] driving the car returns the updated odometer", () => {
+    // store initial odometer reading
+    const initialOdometer = focus.odometer;
+    //distance to drive
+    const distance = 100;
+    const newOdometer = focus.drive(distance)
+    expect(newOdometer).toBe(initialOdometer + distance)
+  });
   // test('[16] driving the car uses gas', () => {})
   // test('[17] refueling allows to keep driving', () => {})
   // test('[18] adding fuel to a full tank has no effect', () => {})

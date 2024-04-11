@@ -26,16 +26,26 @@ describe("[Exercise 2] trimPropertiesMutation", () => {
     // use expect(actual).toEqual(expected) to check that the actual input matches the expected output
     expect(actual).toEqual(expected);
   });
-   test('[4] the object returned is the exact same one we passed in', () => {
-    const input = {foo: ' foo ', bar: 'bar ',  baz: ' baz'};
-    const copy = { ...input};
+  test("[4] the object returned is the exact same one we passed in", () => {
+    const input = { foo: " foo ", bar: "bar ", baz: " baz" };
+    const copy = { ...input };
     utils.trimPropertiesMutation(input);
     expect(input).not.toEqual(copy);
-   })
+  });
 });
 
 describe("[Exercise 3] findLargestInteger", () => {
-  // test('[5] returns the largest number in an array of objects { integer: 2 }', () => {})
+  test("[5] returns the largest number in an array of objects { integer: 2 }", () => {
+    // define an input array of objects, each with an integer property
+
+    const input = [{ integer: 2 }, { integer: 3 }, { integer: 1 }];
+    // expected output defined here
+    const expected = 3;
+    // call findLargestInteger with the input array and store the result in the actual
+    const actual = utils.findLargestInteger(input);
+    //use this to check taht the actual output matches the expected output
+    expect(actual).toBe(expected);
+  });
 });
 
 describe("[Exercise 4] Counter", () => {

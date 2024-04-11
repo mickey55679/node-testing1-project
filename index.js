@@ -7,9 +7,9 @@
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
-  const result = {}
+  const result = {};
   for (let prop in obj) {
-   result[prop] = obj[prop].trim();
+    result[prop] = obj[prop].trim();
   }
   return result;
 }
@@ -23,11 +23,10 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-  for(let prop in obj) {
+  for (let prop in obj) {
     obj[prop] = obj[prop].trim();
   }
   return obj;
-
 }
 
 /**
@@ -39,7 +38,7 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
-  return Math.max(...integers.map(obj => obj.integer));
+  return Math.max(...integers.map((obj) => obj.integer));
 }
 
 class Counter {
@@ -48,6 +47,7 @@ class Counter {
    * @param {number} initialNumber - the initial state of the count
    */
   constructor(initialNumber) {
+    this.count = initialNumber;
     // ✨ initialize whatever properties are needed
   }
 
@@ -64,6 +64,12 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
+    // first store the current count, then if count is greater than 0 decrement it 
+  const currentCount = this.count;
+  if(this.count > 0 ){
+    this.count--;
+  }
+    return currentCount
     // ✨ implement
   }
 }

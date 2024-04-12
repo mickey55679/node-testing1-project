@@ -135,7 +135,11 @@ class Car {
    * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
-    // ✨ implement
+    const driveableDistance = this.tank * this.mpg;
+    const actualDistance = Math.min(distance, driveableDistance)
+    this.odometer += actualDistance;
+    this.tank -= actualDistance / this.mpg;
+    return this.odometer;
   }
 
   /**
@@ -150,6 +154,9 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
+    const amountToFill = Math.min(gallons, this.tankSize - this.tank)
+    this.tank += amountToFill;
+    return this.tank * this.mpg;
     // ✨ implement
   }
 }
@@ -169,6 +176,7 @@ class Car {
  */
 function isEvenNumberAsync(number) {
   // ✨ implement
+  return Promise.resolve(number % 2 === 0);
 }
 
 module.exports = {

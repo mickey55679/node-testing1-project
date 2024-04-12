@@ -117,11 +117,34 @@ describe("[Exercise 6] Car", () => {
     const initialOdometer = focus.odometer;
     //distance to drive
     const distance = 100;
-    const newOdometer = focus.drive(distance)
-    expect(newOdometer).toBe(initialOdometer + distance)
+    const newOdometer = focus.drive(distance);
+    expect(newOdometer).toBe(initialOdometer + distance);
   });
-  // test('[16] driving the car uses gas', () => {})
-  // test('[17] refueling allows to keep driving', () => {})
+  test("[16] driving the car uses gas", () => {
+    // store the initial amount of gas..
+    const initialTank = focus.tank;
+    // drive the car
+    const distance = 100;
+    focus.drive(distance);
+
+    // check that amount of gas has decreased
+    expect(focus.tank).toBeLessThan(initialTank);
+  });
+  test("[17] refueling allows to keep driving", () => {
+    //drive to empty
+    focus.drive(601);
+    //confirm we can't drive anymore
+    const odometerAfterFirstDrive = focus.odometer;
+    focus.drive(100);
+    expect(focus.odometer).toBe(odometerAfterFirstDrive);
+    //refuel
+    focus.refuel(focus.tankSize);
+    //confirm we can drive again
+    focus.drive(100);
+    const odometerAfterSecondDrive = focus.odometer;
+    // check that the car was able to drive after refueling
+    expect(odometerAfterSecondDrive).toBeGreaterThan(odometerAfterFirstDrive);
+  });
   // test('[18] adding fuel to a full tank has no effect', () => {})
 });
 
